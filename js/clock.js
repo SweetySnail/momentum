@@ -14,13 +14,13 @@ function getClock() {
 
   h1.innerText = `${year}/${month}/${date}(${day_arr[day]})`;
 
-  // Hour, Minute, Second
+  // Hour, Minute
   const hour = String(newDate.getHours()).padStart(2,"0");
   const minute = String(newDate.getMinutes()).padStart(2,"0");
-  const second = String(newDate.getSeconds()).padStart(2,"0");
 
-  h2.innerText = `${hour} : ${minute} : ${second}`;
+  h2.innerText = `${hour} : ${minute}`;
 }
 
 getClock();
+console.log("Clock Success");
 setInterval(getClock, 1000);
