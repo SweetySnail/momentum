@@ -7,6 +7,7 @@
   --font-large: 120px;
   --font-regular: 30px;
   --font-small: 16px;
+  --font-micro: 10px;
 
   /* Font weight */
   --weight-bold: 700;
@@ -46,13 +47,25 @@ html, body {
 }
 
 h1#clock {
+  margin: 10px 0;
+  font-size: var(--font-large);
+  color: var(--color-white);
+}
+
+h2#clock {
   margin: 0;
   font-size: var(--font-regular);
   color: var(--color-white);
 }
 
-h2#clock {
-  margin: 10px 0;
-  font-size: var(--font-large);
+/* Quote */
+h3#quote {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: var(--font-small);
   color: var(--color-white);
 }

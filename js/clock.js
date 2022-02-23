@@ -12,13 +12,13 @@ function getClock() {
   const day = newDate.getDay();
   const day_arr = ["일", "월", "화", "수", "목", "금", "토"];
 
-  h1.innerText = `${year}/${month}/${date}(${day_arr[day]})`;
+  h2.innerText = `${year}/${month}/${date}(${day_arr[day]})`;
 
   // Hour, Minute
   const hour = String(newDate.getHours()).padStart(2,"0");
   const minute = String(newDate.getMinutes()).padStart(2,"0");
 
-  h2.innerText = `${hour} : ${minute}`;
+  h1.innerText = `${hour} : ${minute}`;
 }
 
 getClock();
