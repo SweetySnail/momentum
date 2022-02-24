@@ -10,8 +10,8 @@ const quote_arr = [
   "성공은 우연히 일어난 일이 아니다.",
   "평범한 것과 비범한 것의 차이는 겨우 한 끗 차이일 뿐이다."
 ]
-const today_quote = document.querySelector("h3#quote");
+const today_quote = document.querySelector("#quote");
 const quote = quote_arr[Math.floor(Math.random() * quote_arr.length)];
 
-today_quote.innerText = `- ${quote} -`;
+today_quote.innerText = `" ${quote} "`;
 console.log("Quote Success");

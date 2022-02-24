@@ -40,7 +40,7 @@ html, body {
 /* Clock */
 .clock {
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 50%;
   text-align: center;
   transform: translate(-50%, -50%);
@@ -68,4 +68,35 @@ h3#quote {
   margin: 0;
   font-size: var(--font-small);
   color: var(--color-white);
+}
+
+/* Greeting */
+.hidden {
+  display: none;
+}
+
+input {
+  width: 150px;
+  height: 30px;
+  background-color: var(--color-white);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+form {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#greeting {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-regular);
+  color: var(--color-white);
+  margin: 0 0;
 }
