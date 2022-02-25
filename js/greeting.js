@@ -23,8 +23,6 @@ function paintGreetings(username) {
     greeting.innerText = `Good ${helloHour[1]}, ${username}`;
   else
   greeting.innerText = `Good ${helloHour[2]}, ${username}`;
-
-  
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);

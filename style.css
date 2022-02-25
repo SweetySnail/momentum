@@ -100,3 +100,14 @@ form {
   color: var(--color-white);
   margin: 0 0;
 }
+
+/* COVID-19 */
+#covid-19 {
+  position: absolute;
+  top: 10%;
+  left: 87%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-small);
+  color: var(--color-white);
+  margin: 0 0;
+}
