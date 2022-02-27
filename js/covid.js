@@ -1,32 +1,37 @@
-const covid_newdate = new Date();
-const covid_year = covid_newdate.getFullYear();
-const covid_month = String(covid_newdate.getMonth() + 1).padStart(2,"0");
-const covid_hour = covid_newdate.getHours();
-let covid_date;
-if(covid_hour < 10 ) {
-  covid_date = String(covid_newdate.getDate() - 1).padStart(2,"0");
+const newDate = new Date();
+const cur_hour = newDate.getHours();
+let covid_today, covid_yesterday;
+if(cur_hour < 10) {
+  covid_today = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()-1);
+  covid_yesterday =  new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()-2);
 }
 else {
-  covid_date = String(covid_newdate.getDate()).padStart(2,"0");
+  covid_today = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+  covid_yesterday =  new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate()-1);
 }
-const covid_today = `${covid_year}${covid_month}${covid_date}`;
+covid_today = String(covid_today.toLocaleDateString()).split('. ');
+covid_today = `${covid_today[0]}${covid_today[1].padStart(2,"0")}${covid_today[2].split('.')[0]}`;
+covid_yesterday = String(covid_yesterday.toLocaleDateString()).split('. ');
+covid_yesterday = `${covid_yesterday[0]}${covid_yesterday[1].padStart(2,"0")}${covid_yesterday[2].split('.')[0]}`;
 
-const xhr = new XMLHttpRequest();
+const URL = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson";
 const SERVICE_KEY = "ZwFUZGwHqu9C%2BFBi479ESV4VbWfMXiTYRj7LhYQGPs9hA%2BIeo67vjxQwL6RfOTVUHQSuhhqo54o%2Btc1WrXCv9w%3D%3D";
-const COVIDAPI_PARAM = `&pageNo=1&numOfRows=10&startCreateDt=${covid_today}&endCreateDt=${covid_today}`;
-const url = `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey=${SERVICE_KEY}${COVIDAPI_PARAM}`;
+const COVIDAPI_PARAM = `&pageNo=1&numOfRows=10&startCreateDt=${covid_yesterday}&endCreateDt=${covid_today}`;
+const url = `${URL}?serviceKey=${SERVICE_KEY}${COVIDAPI_PARAM}`;
 
 const covid = document.querySelector("#covid-19");
-xhr.open('GET', url);
+const xhr = new XMLHttpRequest();
+
 xhr.onreadystatechange = function () {
-    if (this.readyState == 4) {
-      const xml = this.responseXML.getElementsByTagName("decideCnt")[0].firstChild.nodeValue;
-      covid.innerText = `코로나 확진자: ${xml}명`;
+    if (this.readyState == 4 && this.status == 200) {
+      const item = this.responseXML.getElementsByTagName("item");
+      covid.innerText = `금일 확진자: ${item[0].getElementsByTagName("decideCnt")[0].firstChild.nodeValue - item[1].getElementsByTagName("decideCnt")[0].firstChild.nodeValue}명`;
     }
     else {
-      covid.innerText = `코로나 확진자: 00명`;
+      covid.innerText = `금일 확진자: 00명`;
     }
 };
+xhr.open('GET', url);
 xhr.send('');
 
 console.log("COVID-19 Success");
