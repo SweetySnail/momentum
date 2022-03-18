@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <title>Project_Momentum</title>
+</head>
 
+<body>
+  <!-- Clock -->
   <span class="clock">
     <h2 id="clock">0000:00:00(Mon)</h2>
     <h1 id="clock">00:00:00</h1>
   </span>
   
+  <!-- Quote -->
   <span class="quote">
     <h3 id="quote">quote</h3>
   </span>
 
+  <!-- Log In -->
   <form id="login-form" class="hidden">
     <input
       required
@@ -27,17 +31,42 @@
   </form>
   <h2 id="greeting"></h2>
 
-  <span clss="covid-19">
+  <!-- ToDo List -->
+  <form id="todo-form">
+    <input
+      id="todo-contents"
+      required
+      type="text"
+      placeholder="Todo"
+    />
+    <input
+      id="todo-timer"
+      type="time"
+      placeholder="Time"
+    />
+  </form>
+  <ul id="todo-list"></ul>
+
+  <!-- Info -->
+  <span clss="info"
+  style="position: absolute;
+        top: 10%;
+        left: 87%;
+        transform: translate(-50%, -50%);
+        color: var(--color-white);">
+    <img id="weather_img"/>
+    <h2 id="weather"></h2>
     <h2 id="covid-19">test</h2>
   </span>
 
+  <!-- JavaScript -->
   <script src="js/clock.js"></script>
+
   <script src="js/background.js"></script>
   <script src="js/quote.js"></script>
   <script src="js/greeting.js"></script>
+  <script src="js/weather.js"></script>
   <script src="js/covid.js"></script>
-</head>
-<body>
-  
+  <script src="js/todo.js"></script>
 </body>
 </html>
